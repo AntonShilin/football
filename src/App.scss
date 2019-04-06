@@ -1,0 +1,7 @@
+div a{
+  text-decoration: none !important;
+  color: white;
+  &:hover{
+    color: rgb(253, 0, 0);
+  }
+}
