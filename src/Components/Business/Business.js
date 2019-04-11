@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { fetchDataBusinessNews,moreInfoBusiness } from "../../Actions/Actions";
+import { fetchDataBusinessNews, moreInfoBusiness } from "../../Actions/Actions";
 
 class Business extends Component {
   componentDidMount() {
@@ -11,20 +11,22 @@ class Business extends Component {
   }
 
   render() {
-
     return (
+
       <div className="container">
         <div className="row">
           <div className="col">
             {this.props.data.businessnews === null ? (
-              <div className="mt-5">
+              <div  style={{'transform':'translate(0px,190px)'}} className="mt-5">
                 <div className="d-block mx-auto spinner-grow text-danger" />
                 <p className="text-center">Loading ...</p>
               </div>
             ) : (
               this.props.data.businessnews.articles.map((elem, i) => (
                 <div
-                onClick={()=>this.props.showMoreInfo(this.props.url,elem,i)}
+                  onClick={() =>
+                    this.props.showMoreInfo(this.props.url, elem, i)
+                  }
                   className="article border-top border-bottom mt-3 p-3"
                   key={i}
                 >
@@ -48,21 +50,23 @@ class Business extends Component {
           </div>
         </div>
       </div>
+  
     );
   }
 }
 
-function mapStateToProps(state,url) {
+function mapStateToProps(state, url) {
   return {
     data: state.alldata,
-    url:url
+    url: url
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     getData: url => dispatch(fetchDataBusinessNews(url)),
-    showMoreInfo: (value,name,num) => dispatch(moreInfoBusiness(value,name,num))
+    showMoreInfo: (value, name, num) =>
+      dispatch(moreInfoBusiness(value, name, num))
   };
 }
 

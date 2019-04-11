@@ -17,7 +17,7 @@ class Technology extends Component {
         <div className="row">
           <div className="col">
             {this.props.data.technology === null ? (
-              <div className="mt-5">
+              <div className="mt-5" style={{'transform':'translate(0px,190px)'}}>
                 <div className="d-block mx-auto spinner-grow text-danger" />
                 <p className="text-center">Loading ...</p>
               </div>

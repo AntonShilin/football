@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, NavLink, Switch, Redirect } from "react-router-dom";
+import "./App.scss";
 import Topheadlines from "./Components/Topheadlines/Topheadlines";
 import Business from "./Components/Business/Business";
 import Entertainment from "./Components/Entertainment/Entertainment";
@@ -14,14 +15,17 @@ class App extends Component {
     let day = new Date().toString().match(/\w\w\w\s\w\w\w\s\d\d\s\d\d\d\d\s/);
     return (
       <React.Fragment>
-        <div className="jumbotron rounded-0 pl-3 pr-3 pt-3 pb-0 m-0   bg-dark">
+        <div className="container-fluid p-3 m-0 bg-dark">
           <h1 className="text-center text-white">Today’s Paper</h1>
-          <div className="mt-3 small ">
+        </div>
+        <nav className="navbar navbar-expand-sm bg-dark navbar-dark mb-4 border-top sticky-top">
+          {/* Brand */}
+          <div className="navbar-brand">
             <span className="font-weight-bold text-white">{day[0]}</span>
           </div>
-        </div>
-        <nav className="navbar navbar-expand-sm bg-dark navbar-dark mb-4 border-top">
+
           {/*  <!-- Toggler/collapsibe Button --> */}
+
           <button
             className="navbar-toggler"
             type="button"
@@ -36,10 +40,10 @@ class App extends Component {
             className="collapse navbar-collapse justify-content-center"
             id="collapsibleNavbar"
           >
-            <ul className="navbar-nav ">
+            <ul className="navbar-nav">
               <li className="nav-item">
                 <NavLink className="nav-link" exact to="/">
-                  Top headlines
+                  Top news
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -89,20 +93,13 @@ class App extends Component {
 
           <Route path="/:name" render={() => <ShowMoreThisInfo />} />
 
-          <Route
-            path="/404"
-            render={() => (
-              <div className="container">
-                <div className="row">
-                  <div className="col">
-                    <h1 className="text-center">404 Page is not found</h1>
-                  </div>
-                </div>
-              </div>
-            )}
+          
           />
-          <Redirect to={"/404"} />
+         
         </Switch>
+        <footer className=" bg-dark mt-5">
+          <p className="m-0 text-white text-center p-3">Made by Today’s news</p>
+      </footer>
       </React.Fragment>
     );
   }
