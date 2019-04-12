@@ -39,7 +39,7 @@ class Business extends Component {
                       className="img-fluid mt-3 mb-2"
                       alt={`img ${i}`}
                     />
-                    <p className="mb-0">{elem.description}</p>
+                    <p className="mb-0">"{elem.description}"</p>
                   </div>
                   <div className="text-left small blockquote-footer">{`${
                     elem.author ? elem.author : ""

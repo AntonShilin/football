@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, NavLink, Switch, Redirect } from "react-router-dom";
+import { Route, NavLink, Switch } from "react-router-dom";
 import "./App.scss";
 import Topheadlines from "./Components/Topheadlines/Topheadlines";
 import Business from "./Components/Business/Business";
@@ -25,7 +25,6 @@ class App extends Component {
           </div>
 
           {/*  <!-- Toggler/collapsibe Button --> */}
-
           <button
             className="navbar-toggler"
             type="button"
@@ -90,12 +89,11 @@ class App extends Component {
           <Route path="/health" render={() => <Health />} />
           <Route path="/science" render={() => <Science />} />
           <Route path="/sport" render={() => <Sports />} />
-
           <Route path="/:name" render={() => <ShowMoreThisInfo />} />
 
+          {/* <Redirect to={"/"} /> */}
           
-          />
-         
+          
         </Switch>
         <footer className=" bg-dark mt-5">
           <p className="m-0 text-white text-center p-3">Made by Today’s news</p>

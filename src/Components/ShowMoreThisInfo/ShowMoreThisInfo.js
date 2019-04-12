@@ -4,21 +4,17 @@ import { withRouter } from "react-router-dom";
 
 class ShowMoreThisInfo extends Component {
   render() {
-    console.log("ShowMoreThisInfo", this.props.url);
-    console.log("ShowMoreThisInfo", this.props.data);
     let index = null;
-    if (this.props.url.match.params.name.match(/\d/)===-1) {
-    
-    } else{
-      index = this.props.url.match.params.name.match(/\d/)[0];
-  }
-   
     let section = null;
-   
+
+    if (window.location.pathname.search(/\d[%]\d\d\w+/) === 1) {
+      index = this.props.url.match.params.name.match(/\d/)[0];
       section = this.props.url.match.params.name.match(/\s\w+/)[0];
- 
-    console.log("Index", index);
-    console.log("RegExp", section);
+    } else {
+      index = 0;
+      section = "topheadline";
+    }
+
     return (
       <div className="container">
         <div className="row">
@@ -49,7 +45,7 @@ class ShowMoreThisInfo extends Component {
                       "{this.props.data[elem].articles[index].description}"
                     </p>
                   </div>
-                    <p className="mt-3 text-break" style={{ 'textIndent': '2em'}}>
+                  <p className="mt-3 text-break" style={{ textIndent: "2em" }}>
                     {this.props.data[elem].articles[index].content}
                     {` `}
                     <a
