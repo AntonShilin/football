@@ -37,11 +37,25 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDFTm5Ygwa_BZxhNBsQfnpJPmI2sSGe9OU",
+        authDomain: "news-c40f9.firebaseapp.com",
+        databaseURL: "https://news-c40f9.firebaseio.com",
+        projectId: "news-c40f9",
+        storageBucket: "",
+        messagingSenderId: "513954481309"
+      };
+      firebase.initializeApp(config);
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    
+
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   </body>

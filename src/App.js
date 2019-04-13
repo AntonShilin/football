@@ -20,8 +20,8 @@ class App extends Component {
         </div>
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark mb-4 border-top sticky-top">
           {/* Brand */}
-          <div className="navbar-brand">
-            <span className="font-weight-bold text-white">{day[0]}</span>
+          <div className="navbar-nav">
+            <span className="nav-item font-weight-bold text-white">{day[0]}</span>
           </div>
 
           {/*  <!-- Toggler/collapsibe Button --> */}
@@ -96,7 +96,7 @@ class App extends Component {
           
         </Switch>
         <footer className=" bg-dark mt-5">
-          <p className="m-0 text-white text-center p-3">Made by Today’s news</p>
+          <p className="m-0 text-white text-center p-3">Made by Today’s Paper</p>
       </footer>
       </React.Fragment>
     );

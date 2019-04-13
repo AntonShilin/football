@@ -7,8 +7,8 @@ class ShowMoreThisInfo extends Component {
     let index = null;
     let section = null;
 
-    if (window.location.pathname.search(/\d[%]\d\d\w+/) === 1) {
-      index = this.props.url.match.params.name.match(/\d/)[0];
+    if (window.location.pathname.search(/\d+[%]\d\d\w+/) === 1) {
+      index = this.props.url.match.params.name.match(/\d+/)[0];
       section = this.props.url.match.params.name.match(/\s\w+/)[0];
     } else {
       index = 0;
