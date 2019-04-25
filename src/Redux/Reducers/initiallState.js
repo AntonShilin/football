@@ -16,9 +16,9 @@ import {
 } from "../../Actions/ActionsTypes";
 
 export const alldata = {
-  topheadline: null,
-  businessnews: null,
-  entertainment: null,
+  allchampionat: null,
+  england: null,
+  italy: null,
   technology: null,
   health: null,
   science: null,
@@ -30,17 +30,17 @@ export default function reducerForQuestion(state = alldata, action) {
     case GET_NEWS:
       return {
         ...state,
-        topheadline: action.payload
+        allchampionat: action.payload
       };
     case GET_BUSINESS_NEWS:
       return {
         ...state,
-        businessnews: action.payload
+        england: action.payload
       };
     case GET_ENTERTAINMENT_NEWS:
       return {
         ...state,
-        entertainment: action.payload
+        italy: action.payload
       };
     case GET_TECHNOLOGY_NEWS:
       return {
