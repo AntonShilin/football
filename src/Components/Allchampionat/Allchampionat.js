@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchDataTopNews,moreInfo } from "../../Actions/Actions";
+import {
+  fetchDataTopNews,
+  moreInfo,
+  analysisTotal
+} from "../../Actions/Actions";
 import "../Allchampionat/Allchampionat.scss";
 
 class Allchampionat extends Component {
   componentDidMount() {
-    this.props.getData(
-      "https://www.scorebat.com/video-api/v1/"
-    );
+    this.props.getData("https://www.scorebat.com/video-api/v1/");
   }
 
   render() {
-
     return (
       <div className="container">
         <div className="row">
@@ -22,8 +23,10 @@ class Allchampionat extends Component {
                 style={{ transform: "translate(0px,190px)" }}
                 className="mt-5"
               >
-                <div className="d-block mx-auto spinner-grow text-danger" />
-                <p className="text-center">Loading ...</p>
+                <div className="spinner-border text-success d-block mx-auto" />
+                <p className="text-center mt-2 text-uppercase">
+                  Find games ...
+                </p>
               </div>
             ) : (
               this.props.data.allchampionat.map((elem, i) => (
@@ -31,24 +34,28 @@ class Allchampionat extends Component {
                   onClick={() =>
                     this.props.showMoreInfo(this.props.url, elem, i)
                   }
-                  className="article border mt-3 p-3"
+                  className="article border mt-3 p-3 rounded bg-success"
                   key={i}
                 >
                   <div className="text-center">
-                    <h5>{elem.competition.name}</h5>
-                    <hr></hr>
-                    <h5>{elem.title}</h5>
-                    <h5>
-                      {elem.videos[1]
-                        ? elem.videos[1].title.match(/\d-\d/)
-                        : "0 - 0"}
-                    </h5>
-                    <div>
+                    <p className="small text-white">{elem.competition.name}</p>
+                    <hr className="border-white" />
+                    <h5 className="text-uppercase font-weight-bold">{elem.title}</h5>
+                    <h4>
+                      <span className="badge badge-pill badge-danger">
+                        {this.props.showResult(elem.videos)}
+                      </span>
+                    </h4>
+                    <div className="result_block">
                       {elem.videos.map((player, i) =>
                         player.title === "Highlights" ? (
                           ""
                         ) : (
-                          <p key={i} className='mb-1 text-left'>{player.title}</p>
+                          <h5 key={i} className="mb-1 text-left  pl-3">
+                            <span className="font-weight-bold badge badge-pill badge-light">
+                              {player.title}
+                            </span>
+                          </h5>
                         )
                       )}
                     </div>
@@ -63,7 +70,7 @@ class Allchampionat extends Component {
   }
 }
 
-function mapStateToProps(state,url) {
+function mapStateToProps(state, url) {
   return {
     data: state.alldata,
     url: url
@@ -73,12 +80,14 @@ function mapStateToProps(state,url) {
 function mapDispatchToProps(dispatch) {
   return {
     getData: url => dispatch(fetchDataTopNews(url)),
-    showMoreInfo: (value, name,num) => dispatch(moreInfo(value,name,num))
-
+    showMoreInfo: (value, name, num) => dispatch(moreInfo(value, name, num)),
+    showResult: value => dispatch(analysisTotal(value))
   };
 }
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Allchampionat));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Allchampionat)
+);

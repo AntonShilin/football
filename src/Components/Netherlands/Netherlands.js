@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import {
-  fetchDataBusinessNews,
-  moreInfoBusiness,
+  fetchDataSportNews,
+  moreInfoSport,
   analysisTotal
 } from "../../Actions/Actions";
 
-class England extends Component {
+class Netherlands extends Component {
   componentDidMount() {
     this.props.getData("https://www.scorebat.com/video-api/v1/");
   }
@@ -17,19 +17,19 @@ class England extends Component {
       <div className="container">
         <div className="row">
           <div className="col">
-            {this.props.data.england === null ? (
+            {this.props.data.netherlands === null ? (
               <div
                 style={{ transform: "translate(0px,190px)" }}
                 className="mt-5"
               >
                 <div className="spinner-border text-success d-block mx-auto" />
-                <p className="text-center mt-2 text-uppercase">
-                  Find games ...
+                <p className="text-center uppercase mt-2 text-uppercase">
+                  Find matches ...
                 </p>
               </div>
             ) : (
-              this.props.data.england.map((elem, i) =>
-                elem.competition.name.search(/ENGLAND/) === 0 ? (
+              this.props.data.netherlands.map((elem, i) =>
+                elem.competition.name.search(/NETHERLANDS/) === 0 ? (
                   <div
                     onClick={() =>
                       this.props.showMoreInfo(this.props.url, elem, i)
@@ -84,9 +84,9 @@ function mapStateToProps(state, url) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getData: url => dispatch(fetchDataBusinessNews(url)),
+    getData: url => dispatch(fetchDataSportNews(url)),
     showMoreInfo: (value, name, num) =>
-      dispatch(moreInfoBusiness(value, name, num)),
+      dispatch(moreInfoSport(value, name, num)),
     showResult: value => dispatch(analysisTotal(value))
   };
 }
@@ -95,5 +95,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(England)
+  )(Netherlands)
 );

@@ -19,10 +19,10 @@ export const alldata = {
   allchampionat: null,
   england: null,
   italy: null,
-  technology: null,
-  health: null,
-  science: null,
-  sport: null
+  spain: null,
+  germany: null,
+  france: null,
+  netherlands: null
 };
 
 export default function reducerForQuestion(state = alldata, action) {
@@ -45,24 +45,24 @@ export default function reducerForQuestion(state = alldata, action) {
     case GET_TECHNOLOGY_NEWS:
       return {
         ...state,
-        technology: action.payload
+        spain: action.payload
       };
     case GET_HEALTH_NEWS:
       return {
         ...state,
-        health: action.payload
+        germany: action.payload
       };
 
     case GET_SCIENCE_NEWS:
       return {
         ...state,
-        science: action.payload
+        france: action.payload
       };
 
     case GET_SPORT_NEWS:
       return {
         ...state,
-        sport: action.payload
+        netherlands: action.payload
       };
 
     case GET_MORE_NEWS:

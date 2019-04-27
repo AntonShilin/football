@@ -132,6 +132,7 @@ export function fetchDataScienceNews(url) {
     }, 2000);
   };
 }
+
 export function fetchDataSportNews(url) {
   return dispatch => {
     setTimeout(() => {
@@ -206,5 +207,20 @@ export function moreInfoSport(value, name, num) {
     payload: value,
     namearticle: name,
     index: num
+  };
+}
+
+/* обработка результата матча */
+export function analysisTotal(elem) {
+  return dispatch => {
+    if (elem[0].title.search(/\d-\d/) === -1) {
+      if ((elem[1] === undefined) === false) {
+        return elem[1].title.match(/\d-\d/)[0];
+      } else {
+        return "0-0";
+      }
+    } else {
+      return elem[0].title.match(/\d-\d/)[0];
+    }
   };
 }

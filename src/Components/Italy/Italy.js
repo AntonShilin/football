@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import {
   fetchDataEntertainmentNews,
-  moreInfoEntertainment
+  moreInfoEntertainment,
+  analysisTotal
 } from "../../Actions/Actions";
 
 class Italy extends Component {
@@ -26,7 +27,7 @@ class Italy extends Component {
               >
                 <div className="spinner-border text-success d-block mx-auto" />
                 <p className="text-center uppercase mt-2 text-uppercase">
-                  Loading ...
+                Find matches ...
                 </p>
               </div>
             ) : (
@@ -36,30 +37,30 @@ class Italy extends Component {
                     onClick={() =>
                       this.props.showMoreInfo(this.props.url, elem, i)
                     }
-                    className="article border mt-3 p-3 bg-success"
+                    className="article border mt-3 p-3 bg-success rounded"
                     key={i}
                   >
                     <div className="text-center">
-                      <h5 className='text-white'>{elem.competition.name}</h5>
+                      <p className="small text-white">
+                        {elem.competition.name}
+                      </p>
                       <hr className="border-white" />
-                      <h3>{elem.title}</h3>
+                      <h5 className="text-uppercase font-weight-bold">{elem.title}</h5>
                       <h4>
-                        {elem.videos[1] ? (
-                          <span className="badge badge-danger">
-                            {elem.videos[1].title.match(/\d-\d/)}
-                          </span>
-                        ) : (
-                          <span className="badge badge-danger">0 - 0</span>
-                        )}
+                        <span className="badge badge-pill badge-danger">
+                          {this.props.showResult(elem.videos)}
+                        </span>
                       </h4>
-                      <div>
+                      <div className="result_block">
                         {elem.videos.map((player, i) =>
                           player.title === "Highlights" ? (
                             ""
                           ) : (
-                            <p key={i} className="mb-1 text-left bg-warning text-dark pl-3">
-                              <span className='font-weight-bold'>{player.title}</span>
-                            </p>
+                            <h5 key={i} className="mb-1 text-left  pl-3">
+                              <span className="font-weight-bold badge badge-pill badge-light">
+                                {player.title}
+                              </span>
+                            </h5>
                           )
                         )}
                       </div>
@@ -87,7 +88,8 @@ function mapStateToProps(state,url) {
 function mapDispatchToProps(dispatch) {
   return {
     getData: url => dispatch(fetchDataEntertainmentNews(url)),
-    showMoreInfo: (value,name,num) => dispatch(moreInfoEntertainment(value,name,num))
+    showMoreInfo: (value, name, num) => dispatch(moreInfoEntertainment(value, name, num)),
+    showResult: value => dispatch(analysisTotal(value))
   };
 }
 

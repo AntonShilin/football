@@ -4,24 +4,26 @@ import "./App.scss";
 import Allchampionat from "./Components/Allchampionat/Allchampionat";
 import England from "./Components/England/England";
 import Italy from "./Components/Italy/Italy";
-import Technology from "./Components/Technology/Technology";
-import Health from "./Components/Health/Health";
-import Science from "./Components/Science/Science";
-import Sports from "./Components/Sports/Sports";
+import Spain from "./Components/Spain/Spain";
+import Germany from "./Components/Germany/Germany";
+import France from "./Components/France/France";
+import Netherlands from "./Components/Netherlands/Netherlands";
 import ShowMoreThisInfo from "./Components/ShowMoreThisInfo/ShowMoreThisInfo";
 
 class App extends Component {
   render() {
-    let day = new Date().toString().match(/\w\w\w\s\d\d\s\d\d\d\d\s/);
+    let day = new Date().toString().match(/\w\w\w\s\d\d/);
     return (
       <React.Fragment>
         <div className="container-fluid p-3 m-0 bg-success">
-          <h1 className="text-center text-white">Goool</h1>
+          <h1 className="text-center text-white font-weight-bolder">Goool</h1>
         </div>
-        <nav className="navbar navbar-expand-sm bg-dark navbar-dark mb-4 border-top sticky-top">
+        <nav className="navbar navbar-expand-md bg-dark navbar-dark mb-4 border-top sticky-top">
           {/* Brand */}
           <div className="navbar-nav">
-            <span className="nav-item font-weight-bold text-warning">{day[0]}</span>
+            <span className="nav-item font-weight-bold text-warning">
+              {day[0]}
+            </span>
           </div>
 
           {/*  <!-- Toggler/collapsibe Button --> */}
@@ -41,45 +43,62 @@ class App extends Component {
           >
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink className="nav-link" exact to="/">
-                Results
+                <NavLink
+                  className="nav-link text-uppercase font-weight-bold"
+                  exact
+                  to="/"
+                >
+                  See all games
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/england">
-                England
+                <NavLink
+                  className="nav-link text-uppercase font-weight-bold"
+                  to="/england"
+                >
+                  England
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/italy">
-                Italy
+                <NavLink
+                  className="nav-link text-uppercase font-weight-bold"
+                  to="/italy"
+                >
+                  Italy
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/technology">
-                  Technology
+                <NavLink
+                  className="nav-link text-uppercase font-weight-bold"
+                  to="/spain"
+                >
+                  Spain
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/health">
-                  Health
+                <NavLink
+                  className="nav-link text-uppercase font-weight-bold"
+                  to="/germany"
+                >
+                  Germany
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/science">
-                  Science
+                <NavLink
+                  className="nav-link text-uppercase font-weight-bold"
+                  to="/france"
+                >
+                  France
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/sport">
-                  Sports
+              <li className="nav-item text-uppercase font-weight-bold">
+                <NavLink className="nav-link" to="/netherlands">
+                  Netherlands
                 </NavLink>
               </li>
             </ul>
           </div>
         </nav>
-
-      
 
         {/* Rounting */}
 
@@ -87,19 +106,17 @@ class App extends Component {
           <Route path="/" exact render={() => <Allchampionat />} />
           <Route path="/england" render={() => <England />} />
           <Route path="/italy" render={() => <Italy />} />
-          <Route path="/technology" render={() => <Technology />} />
-          <Route path="/health" render={() => <Health />} />
-          <Route path="/science" render={() => <Science />} />
-          <Route path="/sport" render={() => <Sports />} />
+          <Route path="/spain" render={() => <Spain />} />
+          <Route path="/germany" render={() => <Germany />} />
+          <Route path="/france" render={() => <France />} />
+          <Route path="/netherlands" render={() => <Netherlands />} />
           <Route path="/:name" render={() => <ShowMoreThisInfo />} />
 
           {/* <Redirect to={"/"} /> */}
-          
-          
         </Switch>
         <footer className="bg-success mt-5">
           <p className="m-0 text-white text-center p-3">Made by Goool</p>
-      </footer>
+        </footer>
       </React.Fragment>
     );
   }
