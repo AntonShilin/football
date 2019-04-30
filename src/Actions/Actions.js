@@ -152,8 +152,8 @@ export function fetchDataSportNews(url) {
   };
 }
 
-export function moreInfo(value, name, num) {
-  return { type: GET_MORE_NEWS, payload: value, namearticle: name, index: num };
+export function moreInfo(value,url) {
+  return { type: GET_MORE_NEWS, payload: value, url :url };
 }
 
 export function moreInfoBusiness(value, name, num) {
@@ -214,13 +214,15 @@ export function moreInfoSport(value, name, num) {
 export function analysisTotal(elem) {
   return dispatch => {
     if (elem[0].title.search(/\d-\d/) === -1) {
-      if ((elem[1] === undefined) === false) {
-        return elem[1].title.match(/\d-\d/)[0];
-      } else {
+      if (elem[1] === undefined) {
         return "0-0";
+      } else {
+        let x = elem[1].title.match(/\d-\d/);
+        return x;
       }
     } else {
-      return elem[0].title.match(/\d-\d/)[0];
+      let y = elem[0].title.match(/\d-\d/);
+      return y;
     }
   };
 }

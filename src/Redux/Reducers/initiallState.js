@@ -66,9 +66,15 @@ export default function reducerForQuestion(state = alldata, action) {
       };
 
     case GET_MORE_NEWS:
-      action.payload.history.push(
-        "/" + action.index + " topheadline " + action.namearticle.title
+      console.log(
+        action.payload.parentNode.parentNode.parentNode.getAttribute(
+          "data-match"
+        )
       );
+      let adress = action.payload.parentNode.parentNode.parentNode.getAttribute(
+        "data-match"
+      );
+      action.url.history.push("/" + adress);
       return {
         ...state
       };
@@ -91,7 +97,7 @@ export default function reducerForQuestion(state = alldata, action) {
 
     case GET_MORE_TECHNOLOGY_NEWS:
       action.payload.history.push(
-       action.index + " technology " + action.namearticle.title
+        action.index + " technology " + action.namearticle.title
       );
       return {
         ...state
