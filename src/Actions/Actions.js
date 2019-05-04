@@ -1,21 +1,21 @@
 import {
-  GET_NEWS,
-  GET_BUSINESS_NEWS,
-  GET_ENTERTAINMENT_NEWS,
-  GET_TECHNOLOGY_NEWS,
-  GET_HEALTH_NEWS,
-  GET_SCIENCE_NEWS,
-  GET_SPORT_NEWS,
-  GET_MORE_NEWS,
-  GET_MORE_BUSINESS_NEWS,
-  GET_MORE_ENTERTAINMENT_NEWS,
-  GET_MORE_TECHNOLOGY_NEWS,
-  GET_MORE_HEALTH_NEWS,
-  GET_MORE_SCIENCE_NEWS,
-  GET_MORE_SPORT_NEWS
+  GET_ALLCHAMPIONAT,
+  GET_ENGLAND_NEWS,
+  GET_ITALY_NEWS,
+  GET_SPAIN_NEWS,
+  GET_GERMANY_NEWS,
+  GET_FRANCE_NEWS,
+  GET_NETHERLANDS_NEWS,
+  GET_MORE_ALLMATCHES,
+  GET_MORE_ENGLAND,
+  GET_MORE_ITALY,
+  GET_MORE_SPAIN,
+  GET_MORE_GERMANY,
+  GET_MORE_FRANCE,
+  GET_MORE_NETHERLANDS
 } from "../Actions/ActionsTypes";
 
-export function fetchDataTopNews(url) {
+export function fetchDataAll(url) {
   return dispatch => {
     setTimeout(() => {
       fetch(url)
@@ -26,7 +26,7 @@ export function fetchDataTopNews(url) {
           return response;
         })
         .then(response => response.json())
-        .then(result => dispatch({ type: GET_NEWS, payload: result }))
+        .then(result => dispatch({ type: GET_ALLCHAMPIONAT, payload: result }))
         .catch(function(err) {
           throw new Error(err);
         });
@@ -34,7 +34,7 @@ export function fetchDataTopNews(url) {
   };
 }
 
-export function fetchDataBusinessNews(url) {
+export function fetchDataEngland(url) {
   return dispatch => {
     setTimeout(() => {
       fetch(url)
@@ -45,7 +45,7 @@ export function fetchDataBusinessNews(url) {
           return response;
         })
         .then(response => response.json())
-        .then(result => dispatch({ type: GET_BUSINESS_NEWS, payload: result }))
+        .then(result => dispatch({ type: GET_ENGLAND_NEWS, payload: result }))
         .catch(function(err) {
           throw new Error(err);
         });
@@ -53,28 +53,7 @@ export function fetchDataBusinessNews(url) {
   };
 }
 
-export function fetchDataEntertainmentNews(url) {
-  return dispatch => {
-    setTimeout(() => {
-      fetch(url)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(response.statusText);
-          }
-          return response;
-        })
-        .then(response => response.json())
-        .then(result =>
-          dispatch({ type: GET_ENTERTAINMENT_NEWS, payload: result })
-        )
-        .catch(function(err) {
-          throw new Error(err);
-        });
-    }, 2000);
-  };
-}
-
-export function fetchDataTechnologyNews(url) {
+export function fetchDataItaly(url) {
   return dispatch => {
     setTimeout(() => {
       fetch(url)
@@ -86,7 +65,7 @@ export function fetchDataTechnologyNews(url) {
         })
         .then(response => response.json())
         .then(result =>
-          dispatch({ type: GET_TECHNOLOGY_NEWS, payload: result })
+          dispatch({ type: GET_ITALY_NEWS, payload: result })
         )
         .catch(function(err) {
           throw new Error(err);
@@ -95,7 +74,7 @@ export function fetchDataTechnologyNews(url) {
   };
 }
 
-export function fetchDataHealthNews(url) {
+export function fetchDataSpain(url) {
   return dispatch => {
     setTimeout(() => {
       fetch(url)
@@ -106,7 +85,9 @@ export function fetchDataHealthNews(url) {
           return response;
         })
         .then(response => response.json())
-        .then(result => dispatch({ type: GET_HEALTH_NEWS, payload: result }))
+        .then(result =>
+          dispatch({ type: GET_SPAIN_NEWS, payload: result })
+        )
         .catch(function(err) {
           throw new Error(err);
         });
@@ -114,7 +95,7 @@ export function fetchDataHealthNews(url) {
   };
 }
 
-export function fetchDataScienceNews(url) {
+export function fetchDataGermany(url) {
   return dispatch => {
     setTimeout(() => {
       fetch(url)
@@ -125,7 +106,7 @@ export function fetchDataScienceNews(url) {
           return response;
         })
         .then(response => response.json())
-        .then(result => dispatch({ type: GET_SCIENCE_NEWS, payload: result }))
+        .then(result => dispatch({ type: GET_GERMANY_NEWS, payload: result }))
         .catch(function(err) {
           throw new Error(err);
         });
@@ -133,7 +114,7 @@ export function fetchDataScienceNews(url) {
   };
 }
 
-export function fetchDataSportNews(url) {
+export function fetchDataFrance(url) {
   return dispatch => {
     setTimeout(() => {
       fetch(url)
@@ -144,7 +125,7 @@ export function fetchDataSportNews(url) {
           return response;
         })
         .then(response => response.json())
-        .then(result => dispatch({ type: GET_SPORT_NEWS, payload: result }))
+        .then(result => dispatch({ type: GET_FRANCE_NEWS, payload: result }))
         .catch(function(err) {
           throw new Error(err);
         });
@@ -152,61 +133,80 @@ export function fetchDataSportNews(url) {
   };
 }
 
-export function moreInfo(value,url) {
-  return { type: GET_MORE_NEWS, payload: value, url :url };
-}
-
-export function moreInfoBusiness(value, name, num) {
-  return {
-    type: GET_MORE_BUSINESS_NEWS,
-    payload: value,
-    namearticle: name,
-    index: num
+export function fetchDataNetherlands(url) {
+  return dispatch => {
+    setTimeout(() => {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response;
+        })
+        .then(response => response.json())
+        .then(result => dispatch({ type: GET_NETHERLANDS_NEWS, payload: result }))
+        .catch(function(err) {
+          throw new Error(err);
+        });
+    }, 2000);
   };
 }
 
-export function moreInfoEntertainment(value, name, num) {
+export function moreInfo(value, url) {
+  return { type: GET_MORE_ALLMATCHES, payload: value, wichcountry: value, url: url };
+}
+
+export function moreInfoEngland(value, url) {
   return {
-    type: GET_MORE_ENTERTAINMENT_NEWS,
+    type: GET_MORE_ENGLAND,
     payload: value,
-    namearticle: name,
-    index: num
+    wichcountry: value,
+    url: url
   };
 }
 
-export function moreInfoTechnology(value, name, num) {
+export function moreInfoItaly(value, url) {
   return {
-    type: GET_MORE_TECHNOLOGY_NEWS,
+    type: GET_MORE_ITALY,
     payload: value,
-    namearticle: name,
-    index: num
+    wichcountry: value,
+    url: url
   };
 }
 
-export function moreInfoHealth(value, name, num) {
+export function moreInfoSpain(value, url) {
   return {
-    type: GET_MORE_HEALTH_NEWS,
+    type: GET_MORE_SPAIN,
     payload: value,
-    namearticle: name,
-    index: num
+    wichcountry: value,
+    url: url
   };
 }
 
-export function moreInfoScience(value, name, num) {
+export function moreInfoGermany(value, url) {
   return {
-    type: GET_MORE_SCIENCE_NEWS,
+    type: GET_MORE_GERMANY,
     payload: value,
-    namearticle: name,
-    index: num
+    wichcountry: value,
+    url: url
   };
 }
 
-export function moreInfoSport(value, name, num) {
+export function moreInfoFrance(value, url) {
   return {
-    type: GET_MORE_SPORT_NEWS,
+    type: GET_MORE_FRANCE,
     payload: value,
-    namearticle: name,
-    index: num
+    wichcountry: value,
+    url: url
+  };
+}
+
+export function moreInfoNetherlands(value, url) {
+  return {
+    type: GET_MORE_NETHERLANDS,
+    payload: value,
+    wichcountry: value,
+    url: url
   };
 }
 

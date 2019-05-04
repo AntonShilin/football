@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import {
-  fetchDataTopNews,
+  fetchDataAll,
   moreInfo,
   analysisTotal
 } from "../../Actions/Actions";
@@ -31,15 +31,15 @@ class Allchampionat extends Component {
             ) : (
               this.props.data.allchampionat.map((elem, i) => (
                 <div
-                  className="article border mt-3 p-3 rounded bg-success w-75 d-block mx-auto"
+                  className="article border mt-3 p-3 rounded bg-success"
                   key={i}
                 >
                   <div className="text-center">
                     <p className="small text-white">{elem.competition.name}</p>
                     <hr className="border-white" />
-                    <h5 className="text-uppercase font-weight-bold">
-                      {elem.title}
-                    </h5>
+                    <h4 className="">
+                      <span className='text-uppercase font-weight-bold badge badge-pill badge-light'>{elem.title}</span>
+                    </h4>
                     <h4>
                       <span className="badge badge-pill badge-danger">
                         {this.props.showResult(elem.videos)}
@@ -49,23 +49,25 @@ class Allchampionat extends Component {
                       className="result_block"
                       data-league={elem.competition.name}
                       data-match={elem.title}
+                      data-country='allchampionat'
                     >
                       {elem.videos.map((player, i) =>
                         player.title === "Highlights" ? (
                           ""
                         ) : (
-                          <h5 key={i} className="mb-1 text-left  pl-3">
+                          <h5 key={i} className="mb-2 d-flex justify-content-between pl-3">
                             <span className="font-weight-bold badge badge-pill badge-light">
-                              {player.title}
+                              {player.title}<i className='fas fa-futbol ml-2'></i>
                             </span>
                             <span
-                              className="ml-3"
+                              className="mr-3 badge badge-pill badge-light"
                               data-toggle="tooltip"
                               data-placement="right"
                               title="Watch goal"
                             >
-                              <i
-                                className="far fa-play-circle"
+                                <i
+                                  style={{fontSize:'1.2rem'}}
+                                className="far fa-play-circle text-primary"
                                 onClick={event =>
                                   this.props.showVideo(event.target, this.props.url)
                                 }
@@ -95,7 +97,7 @@ function mapStateToProps(state, url) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getData: url => dispatch(fetchDataTopNews(url)),
+    getData: url => dispatch(fetchDataAll(url)),
     showVideo: (value,url) => dispatch(moreInfo(value,url)),
     showResult: value => dispatch(analysisTotal(value))
   };

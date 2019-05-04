@@ -1,18 +1,18 @@
 import {
-  GET_NEWS,
-  GET_BUSINESS_NEWS,
-  GET_ENTERTAINMENT_NEWS,
-  GET_TECHNOLOGY_NEWS,
-  GET_HEALTH_NEWS,
-  GET_SCIENCE_NEWS,
-  GET_SPORT_NEWS,
-  GET_MORE_NEWS,
-  GET_MORE_BUSINESS_NEWS,
-  GET_MORE_ENTERTAINMENT_NEWS,
-  GET_MORE_TECHNOLOGY_NEWS,
-  GET_MORE_HEALTH_NEWS,
-  GET_MORE_SCIENCE_NEWS,
-  GET_MORE_SPORT_NEWS
+  GET_ALLCHAMPIONAT,
+  GET_ENGLAND_NEWS,
+  GET_ITALY_NEWS,
+  GET_SPAIN_NEWS,
+  GET_GERMANY_NEWS,
+  GET_FRANCE_NEWS,
+  GET_NETHERLANDS_NEWS,
+  GET_MORE_ALLMATCHES,
+  GET_MORE_ENGLAND,
+  GET_MORE_ITALY,
+  GET_MORE_SPAIN,
+  GET_MORE_GERMANY,
+  GET_MORE_FRANCE,
+  GET_MORE_NETHERLANDS
 } from "../../Actions/ActionsTypes";
 
 export const alldata = {
@@ -27,102 +27,124 @@ export const alldata = {
 
 export default function reducerForQuestion(state = alldata, action) {
   switch (action.type) {
-    case GET_NEWS:
+    case GET_ALLCHAMPIONAT:
       return {
         ...state,
         allchampionat: action.payload
       };
-    case GET_BUSINESS_NEWS:
+    case GET_ENGLAND_NEWS:
       return {
         ...state,
         england: action.payload
       };
-    case GET_ENTERTAINMENT_NEWS:
+    case GET_ITALY_NEWS:
       return {
         ...state,
         italy: action.payload
       };
-    case GET_TECHNOLOGY_NEWS:
+    case GET_SPAIN_NEWS:
       return {
         ...state,
         spain: action.payload
       };
-    case GET_HEALTH_NEWS:
+    case GET_GERMANY_NEWS:
       return {
         ...state,
         germany: action.payload
       };
 
-    case GET_SCIENCE_NEWS:
+    case GET_FRANCE_NEWS:
       return {
         ...state,
         france: action.payload
       };
 
-    case GET_SPORT_NEWS:
+    case GET_NETHERLANDS_NEWS:
       return {
         ...state,
         netherlands: action.payload
       };
 
-    case GET_MORE_NEWS:
-      console.log(
-        action.payload.parentNode.parentNode.parentNode.getAttribute(
-          "data-match"
-        )
-      );
-      let adress = action.payload.parentNode.parentNode.parentNode.getAttribute(
+    case GET_MORE_ALLMATCHES:
+      let allgames = action.payload.parentNode.parentNode.parentNode.getAttribute(
         "data-match"
       );
-      action.url.history.push("/" + adress);
+      let country = action.wichcountry.parentNode.parentNode.parentNode.getAttribute(
+        "data-country"
+      );
+      action.url.history.push("/" + allgames + ` ` + country);
       return {
         ...state
       };
 
-    case GET_MORE_BUSINESS_NEWS:
-      action.payload.history.push(
-        action.index + " businessnews " + action.namearticle.title
+    case GET_MORE_ENGLAND:
+      let engmatchname = action.payload.parentNode.parentNode.parentNode.getAttribute(
+        "data-match"
       );
+      let engnamecountry = action.wichcountry.parentNode.parentNode.parentNode.getAttribute(
+        "data-country"
+      );
+      action.url.history.push("/" + engmatchname + ` ` + engnamecountry);
       return {
         ...state
       };
 
-    case GET_MORE_ENTERTAINMENT_NEWS:
-      action.payload.history.push(
-        action.index + " entertainment " + action.namearticle.title
+    case GET_MORE_ITALY:
+      let itamatchname = action.payload.parentNode.parentNode.parentNode.getAttribute(
+        "data-match"
       );
+      let itanamecountry = action.wichcountry.parentNode.parentNode.parentNode.getAttribute(
+        "data-country"
+      );
+      action.url.history.push("/" + itamatchname + ` ` + itanamecountry);
       return {
         ...state
       };
 
-    case GET_MORE_TECHNOLOGY_NEWS:
-      action.payload.history.push(
-        action.index + " technology " + action.namearticle.title
+    case GET_MORE_SPAIN:
+      let spainmatchname = action.payload.parentNode.parentNode.parentNode.getAttribute(
+        "data-match"
       );
+      let spainnamecountry = action.wichcountry.parentNode.parentNode.parentNode.getAttribute(
+        "data-country"
+      );
+      action.url.history.push("/" + spainmatchname + ` ` + spainnamecountry);
       return {
         ...state
       };
 
-    case GET_MORE_HEALTH_NEWS:
-      action.payload.history.push(
-        action.index + " health " + action.namearticle.title
+    case GET_MORE_GERMANY:
+      let germmatchname = action.payload.parentNode.parentNode.parentNode.getAttribute(
+        "data-match"
       );
+      let germnamecountry = action.wichcountry.parentNode.parentNode.parentNode.getAttribute(
+        "data-country"
+      );
+      action.url.history.push("/" + germmatchname + ` ` + germnamecountry);
       return {
         ...state
       };
 
-    case GET_MORE_SCIENCE_NEWS:
-      action.payload.history.push(
-        action.index + " science " + action.namearticle.title
-      );
+    case GET_MORE_FRANCE:
+    let frmatchname = action.payload.parentNode.parentNode.parentNode.getAttribute(
+      "data-match"
+    );
+    let frnamecountry = action.wichcountry.parentNode.parentNode.parentNode.getAttribute(
+      "data-country"
+    );
+    action.url.history.push("/" + frmatchname + ` ` + frnamecountry);
       return {
         ...state
       };
 
-    case GET_MORE_SPORT_NEWS:
-      action.payload.history.push(
-        action.index + " sport " + action.namearticle.title
-      );
+    case GET_MORE_NETHERLANDS:
+    let netmatchname = action.payload.parentNode.parentNode.parentNode.getAttribute(
+      "data-match"
+    );
+    let netnamecountry = action.wichcountry.parentNode.parentNode.parentNode.getAttribute(
+      "data-country"
+    );
+    action.url.history.push("/" + netmatchname + ` ` + netnamecountry);
       return {
         ...state
       };
