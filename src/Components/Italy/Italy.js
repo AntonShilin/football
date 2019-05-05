@@ -9,13 +9,10 @@ import {
 
 class Italy extends Component {
   componentDidMount() {
-    this.props.getData(
-      "https://www.scorebat.com/video-api/v1/"
-    );
+    this.props.getData("https://www.scorebat.com/video-api/v1/");
   }
 
   render() {
-
     return (
       <div className="container">
         <div className="row">
@@ -27,7 +24,7 @@ class Italy extends Component {
               >
                 <div className="spinner-border text-success d-block mx-auto" />
                 <p className="text-center uppercase mt-2 text-uppercase">
-                Find matches ...
+                  Find matches ...
                 </p>
               </div>
             ) : (
@@ -43,7 +40,7 @@ class Italy extends Component {
                       </p>
                       <hr className="border-white" />
                       <h4 className="">
-                        <span className="text-uppercase font-weight-bold badge badge-pill badge-light">
+                        <span className="text-uppercase font-weight-bold text-break">
                           {elem.title}
                         </span>
                       </h4>
@@ -56,22 +53,24 @@ class Italy extends Component {
                         className="result_block"
                         data-league={elem.competition.name}
                         data-match={elem.title}
-                        data-country='italy'
+                        data-country="italy"
                       >
                         {elem.videos.map((player, i) =>
-                          player.title === "Highlights" ? (
+                          player.title.search(
+                            /Highlights|Alternative|Extended|Official|Title|Celebrations/
+                          ) === 0 ? (
                             ""
                           ) : (
-                            <h5
+                            <p
                               key={i}
-                              className="mb-2 d-flex justify-content-between pl-3"
+                              className="mb-2 d-flex justify-content-between pl-3 bg-white"
                             >
-                              <span className="font-weight-bold badge badge-pill badge-light">
+                              <span className="font-weight-bold text-break">
                                 {player.title}
                                 <i className="fas fa-futbol ml-2" />
                               </span>
                               <span
-                                className="mr-3 badge badge-pill badge-light"
+                                className="mr-3"
                                 data-toggle="tooltip"
                                 data-placement="right"
                                 title="Watch goal"
@@ -87,7 +86,7 @@ class Italy extends Component {
                                   }
                                 />
                               </span>
-                            </h5>
+                            </p>
                           )
                         )}
                       </div>
@@ -105,10 +104,10 @@ class Italy extends Component {
   }
 }
 
-function mapStateToProps(state,url) {
+function mapStateToProps(state, url) {
   return {
     data: state.alldata,
-    url:url
+    url: url
   };
 }
 

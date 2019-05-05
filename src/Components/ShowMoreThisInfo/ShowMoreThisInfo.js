@@ -41,38 +41,45 @@ class ShowMoreThisInfo extends Component {
                                 ) === 0 ? (
                                   ""
                                 ) : (
-                                  <h5
+                                  <p
                                     key={i}
-                                    className="mb-2 d-flex justify-content-between pl-3"
+                                    className="mb-2 bg-white text-left pl-2"
                                   >
-                                    <span className="font-weight-bold badge badge-pill badge-light">
+                                    <span className="font-weight-bold text-break">
                                       {player.title}
                                       <i className="fas fa-futbol ml-2" />
                                     </span>
-                                  </h5>
+                                  </p>
                                 )
                               )}
                             </div>
                           </div>
                         </div>
                         <div className="videoGoal h-auto d-block mx-auto">
-                          {nameVSname.videos.map((elem, i) => (
-                            <div
-                              key={i}
-                              className="rounded-lg bg-success mt-2 p-3"
-                            >
+                          {nameVSname.videos.map((elem, i) =>
+                            elem.title.search(
+                              /Highlights|Alternative|Extended|Official|Title|Celebrations/
+                            ) === 0 ? (
+                              ""
+                            ) : (
                               <div
-                                dangerouslySetInnerHTML={{
-                                  __html: elem.embed
-                                }}
-                              />
-                              <h5 className="mt-3 text-left  pl-3">
-                                <span className="font-weight-bold badge badge-pill badge-light">
-                                  {elem.title}
-                                </span>
-                              </h5>
-                            </div>
-                          ))}
+                                key={i}
+                                className="rounded-lg bg-success mt-2 p-3"
+                              >
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: elem.embed
+                                  }}
+                                />
+                                <p className="mt-3 bg-white text-left">
+                                  <span className="font-weight-bold text-break pl-2">
+                                    {elem.title}{" "}
+                                    <i className="fas fa-futbol ml-2" />
+                                  </span>
+                                </p>
+                              </div>
+                            )
+                          )}
                         </div>
                       </React.Fragment>
                     ) : (

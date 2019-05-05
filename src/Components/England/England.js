@@ -40,7 +40,7 @@ class England extends Component {
                       </p>
                       <hr className="border-white" />
                       <h4 className="">
-                        <span className="text-uppercase font-weight-bold badge badge-pill badge-light">
+                        <span className="text-uppercase font-weight-bold text-break">
                           {elem.title}
                         </span>
                       </h4>
@@ -56,19 +56,19 @@ class England extends Component {
                         data-country='england'
                       >
                         {elem.videos.map((player, i) =>
-                          player.title.search(/Highlights/)===0 ? (
+                          player.title.search(/Highlights|Alternative|Extended|Official|Title|Celebrations/)===0 ? (
                             ""
                           ) : (
-                            <h5
+                            <p
                               key={i}
-                              className="mb-2 d-flex justify-content-between pl-3"
+                              className="mb-2 d-flex justify-content-between pl-3 bg-white"
                             >
-                              <span className="font-weight-bold badge badge-pill badge-light">
+                              <span className="font-weight-bold text-break">
                                 {player.title}
                                 <i className="fas fa-futbol ml-2" />
                               </span>
                               <span
-                                className="mr-3 badge badge-pill badge-light"
+                                className="mr-3"
                                 data-toggle="tooltip"
                                 data-placement="right"
                                 title="Watch goal"
@@ -84,7 +84,7 @@ class England extends Component {
                                   }
                                 />
                               </span>
-                            </h5>
+                            </p>
                           )
                         )}
                       </div>
