@@ -36,7 +36,9 @@ class ShowMoreThisInfo extends Component {
                             </h4>
                             <div>
                               {nameVSname.videos.map((player, i) =>
-                                player.title === "Highlights" ? (
+                                player.title.search(
+                                  /Highlights|Alternative|Extended|Official|Title|Celebrations/
+                                ) === 0 ? (
                                   ""
                                 ) : (
                                   <h5

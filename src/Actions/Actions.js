@@ -64,9 +64,7 @@ export function fetchDataItaly(url) {
           return response;
         })
         .then(response => response.json())
-        .then(result =>
-          dispatch({ type: GET_ITALY_NEWS, payload: result })
-        )
+        .then(result => dispatch({ type: GET_ITALY_NEWS, payload: result }))
         .catch(function(err) {
           throw new Error(err);
         });
@@ -85,9 +83,7 @@ export function fetchDataSpain(url) {
           return response;
         })
         .then(response => response.json())
-        .then(result =>
-          dispatch({ type: GET_SPAIN_NEWS, payload: result })
-        )
+        .then(result => dispatch({ type: GET_SPAIN_NEWS, payload: result }))
         .catch(function(err) {
           throw new Error(err);
         });
@@ -144,7 +140,9 @@ export function fetchDataNetherlands(url) {
           return response;
         })
         .then(response => response.json())
-        .then(result => dispatch({ type: GET_NETHERLANDS_NEWS, payload: result }))
+        .then(result =>
+          dispatch({ type: GET_NETHERLANDS_NEWS, payload: result })
+        )
         .catch(function(err) {
           throw new Error(err);
         });
@@ -153,7 +151,12 @@ export function fetchDataNetherlands(url) {
 }
 
 export function moreInfo(value, url) {
-  return { type: GET_MORE_ALLMATCHES, payload: value, wichcountry: value, url: url };
+  return {
+    type: GET_MORE_ALLMATCHES,
+    payload: value,
+    wichcountry: value,
+    url: url
+  };
 }
 
 export function moreInfoEngland(value, url) {
@@ -213,16 +216,12 @@ export function moreInfoNetherlands(value, url) {
 /* обработка результата матча */
 export function analysisTotal(elem) {
   return dispatch => {
-    if (elem[0].title.search(/\d-\d/) === -1) {
-      if (elem[1] === undefined) {
-        return "0-0";
-      } else {
-        let x = elem[1].title.match(/\d-\d/);
-        return x;
-      }
+    let arr = elem.map(match => match.title);
+    let score = arr.toString().match(/\d-\d/);
+    if (score === null) {
+      return "0-0";
     } else {
-      let y = elem[0].title.match(/\d-\d/);
-      return y;
+      return score[0];
     }
   };
 }

@@ -56,7 +56,7 @@ class England extends Component {
                         data-country='england'
                       >
                         {elem.videos.map((player, i) =>
-                          player.title === "Highlights" ? (
+                          player.title.search(/Highlights/)===0 ? (
                             ""
                           ) : (
                             <h5
