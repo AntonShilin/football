@@ -5,12 +5,10 @@ import { analysisTotal } from "../../Actions/Actions";
 
 class ShowMoreThisInfo extends Component {
   render() {
-    console.log("More", this.props.data);
-    console.log("More", this.props.url);
+ 
     let searchNameGame = this.props.url.match.params.name.match(/^\w+/);
     let searchNameCountry = this.props.url.match.params.name.match(/\w+$/);
-    console.log("searchNameGame", searchNameGame);
-    console.log("searchNameCountry", searchNameCountry);
+   
     return (
       <div className="container">
         <div className="row">

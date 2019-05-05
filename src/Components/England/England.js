@@ -24,7 +24,7 @@ class England extends Component {
               >
                 <div className="spinner-border text-success d-block mx-auto" />
                 <p className="text-center mt-2 text-uppercase">
-                  Find games ...
+                  Find matches ...
                 </p>
               </div>
             ) : (

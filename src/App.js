@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, NavLink, Switch } from "react-router-dom";
+import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 import "./App.scss";
 import Allchampionat from "./Components/Allchampionat/Allchampionat";
 import England from "./Components/England/England";
@@ -12,19 +12,21 @@ import ShowMoreThisInfo from "./Components/ShowMoreThisInfo/ShowMoreThisInfo";
 
 class App extends Component {
   render() {
-    let day = new Date().toString().match(/\w\w\w\s\d\d/);
+    let day = new Date().toString().match(/\w+\s\d\d\s\d+/);
     return (
       <React.Fragment>
         <div className="container-fluid p-3 m-0 bg-success">
-          <h1 className="text-center text-white font-weight-bolder">Goool</h1>
+          <h1 className="text-center text-white font-weight-bolder mb-0">Goool</h1>
+          <p className="nav-item text-warning mb-0 text-center">
+            {day[0]}
+          </p>
         </div>
         <nav className="navbar navbar-expand-md bg-dark navbar-dark mb-4 border-top sticky-top">
           {/* Brand */}
-          <div className="navbar-nav">
+          {/* <div className="navbar-nav">
             <span className="nav-item font-weight-bold text-warning">
-              {day[0]}
             </span>
-          </div>
+          </div> */}
 
           {/*  <!-- Toggler/collapsibe Button --> */}
           <button
@@ -112,7 +114,7 @@ class App extends Component {
           <Route path="/netherlands" render={() => <Netherlands />} />
           <Route path="/:name" render={() => <ShowMoreThisInfo />} />
 
-          {/* <Redirect to={"/"} /> */}
+          <Redirect to={"/"} />
         </Switch>
         <footer className="bg-success mt-5">
           <p className="m-0 text-white text-center p-3">Made by Goool</p>
