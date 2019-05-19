@@ -1,0 +1,5 @@
+Host: http://www.goool.site
+
+User-agent: *
+Disallow:
+Sitemap: http://www.goool.site/www/index.html
